@@ -228,6 +228,14 @@ p {
     font-family: "Ubuntu", sans-serif;
 }
 
+.crud {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+
 .table-container {
     display: flex;
     width: auto;
@@ -1384,7 +1392,6 @@ button {
 .form-container {
     display: flex;
     flex-direction: column;
-    width: 80%;
     gap: 1rem;
     padding: 0 5px;
 }

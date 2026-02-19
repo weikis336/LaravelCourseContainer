@@ -11,24 +11,36 @@
       </ul>
     </div>
   </div>
-  <div class="table-body"></div>
+  <div class="table-body">
+    @foreach($records as $record)
+      <div class="table-row">
+        <div class="table-row-element">
+          <p>{{ $record->name }}</p>
+        </div>
+        <div class="table-row-element">
+          <p>{{ $record->email }}</p>
+        </div>
+        <div class="table-row-element">
+          <p>{{ $record->created_at }}</p>
+        </div>
+        <div class="table-row-element">
+          <p>{{ $record->updated_at }}</p>
+        </div>
+      </div>
+    @endforeach
+  </div>
   <div class="table-footer">
-    <div class="table-info">
-      <div>
-        <p>
-                    
-        </p>  
-      </div>                 
+    <div class="table-info">               
       <div class="table-page-buttons">
         <div class="table-page-button" data-page="1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41,7.41L17,6L11,12L17,18L18.41,16.59L13.83,12L18.41,7.41M12.41,7.41L11,6L5,12L11,18L12.41,16.59L7.83,12L12.41,7.41Z" /></svg>
         </div>  
-        <div class="table-page-button" data-page="${this.data.meta.currentPage > 1 ? parseInt(this.data.meta.currentPage) - 1 : 1}">
+        <div class="table-page-button" data-page="{{ $records->currentPage() > 1 ? $records->currentPage() - 1 : 1 }}">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>chevron-left</title><path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>                     
         </div>  
         <div class="current-page">
           <label>
-            <input type="number" value="${this.data.meta.currentPage}"> 
+            <input type="number" value="{{ $records->currentPage() }}"> 
             <button class="go-to-page">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,10V14H13L9.5,17.5L11.92,19.92L19.84,12L11.92,4.08L9.5,6.5L13,10H4Z" /></svg>
             </button>

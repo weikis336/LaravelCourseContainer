@@ -23,13 +23,13 @@
 
         <form>
             <div class="tab-content active" data-tab="general">
-                <input name="id" type="hidden">
+                <input name="id" type="hidden" value="{{ $record->id }}">
                 <div class="form-element">
                     <div class="form-element-label">
                         <label>Nombre</label>                
                     </div>
                     <div class="form-element-input">
-                        <input type="text" name="name">
+                        <input type="text" name="name" value="{{ $record->name }}">
                     </div>
                 </div>
                 <div class="form-element">
@@ -37,7 +37,23 @@
                         <label>Email</label>                
                     </div>
                     <div class="form-element-input">
-                        <input type="email" name="email">
+                        <input type="email" name="email" value="{{ $record->email }}">
+                    </div>
+                </div>
+                <div class="form-element">
+                    <div class="form-element-label">
+                        <label>Contraseña</label>                
+                    </div>
+                    <div class="form-element-input">
+                        <input type="password" name="password">
+                    </div>
+                </div>
+                <div class="form-element">
+                    <div class="form-element-label">
+                        <label>Confirmar contraseña</label>                
+                    </div>
+                    <div class="form-element-input">
+                        <input type="password" name="password_confirmation">
                     </div>
                 </div>
             </div>

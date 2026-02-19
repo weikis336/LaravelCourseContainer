@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin'], function () {
     ]
   ]);
 });
+
 Route::get('/admin/panel', function () {
     return view('admin.panel');
 });

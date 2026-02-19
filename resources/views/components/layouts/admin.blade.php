@@ -12,8 +12,7 @@
   <div class="container">
     <x-header></x-header>
     <div class="app-container">
-      <x-tables.table></x-tables.table>
-      <x-forms.form></x-forms.form>
+       {{ $slot }}
     </div>
   </div>
 </body>
