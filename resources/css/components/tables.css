@@ -1,0 +1,86 @@
+.table-body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 75vh;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.table-body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.table-body::-webkit-scrollbar-thumb {
+  background-color: hsl(225, 63%, 65%);
+  /* Color del thumb */
+  border-radius: 10px;
+  /* Bordes redondeados del thumb */
+  /*border: 1px solid hsl(0, 0%, 100%); Espacio entre el thumb y el track */
+}
+
+.table-register {
+  width: 80%;
+}
+
+.table-register-buttons ul {
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.table-register-buttons {}
+
+.table-register-buttons ul li svg {
+  fill: hwb(256 1% 66%);
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.table-register-data {
+  gap: 1rem;
+}
+
+.table-register-data ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #000;
+  padding: 0.5rem;
+}
+
+.table-footer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-info {
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.table-info p {
+  color: hsl(0, 0%, 29%);
+  font-weight: 700;
+  margin: 0;
+}
+
+.table-page-buttons {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.table-page-button {
+  cursor: pointer;
+  fill: hsl(225, 63%, 65%);
+  height: 1.5rem;
+  width: 1.5rem;
+}
