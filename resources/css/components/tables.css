@@ -14,10 +14,7 @@
 
 .table-body::-webkit-scrollbar-thumb {
   background-color: hsl(225, 63%, 65%);
-  /* Color del thumb */
   border-radius: 10px;
-  /* Bordes redondeados del thumb */
-  /*border: 1px solid hsl(0, 0%, 100%); Espacio entre el thumb y el track */
 }
 
 .table-register {
