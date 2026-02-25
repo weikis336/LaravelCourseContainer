@@ -1,3 +1,10 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 5px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -7,17 +14,22 @@
 
 .form-header {
   align-items: center;
-  background-color: hsl(0, 0%, 100%);
+  border-bottom: solid 0.2rem #1f1fa18a;
+
   display: flex;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
 
 .form-tabs ul {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .form-tabs ul li {
-  color: hsl(272, 40%, 35%);
+  color: #485a81b6;
   cursor: pointer;
   height: 2rem;
   padding: 0.3rem;
@@ -25,70 +37,27 @@
 
 .form-tabs ul li.active {
   color: hsl(0, 0%, 100%);
-  background-color: hsl(272, 40%, 35%);
+  background-color: #485a81b6;
 }
 
 .form-buttons {
+  display: flex;
+  justify-content: flex-end;
   padding: 0 0.5rem;
 }
 
 .form-buttons ul {
   align-items: center;
   display: flex;
+  margin: 0;
+  padding: 0;
   gap: 0.5rem;
   justify-content: flex-end;
 }
 
 .form-buttons ul svg {
   cursor: pointer;
-  fill: hwb(256 1% 66%);
-  height: 1.8rem;
-  width: 1.8rem;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0 5px;
-}
-
-.form-header {
-  align-items: center;
-  background-color: hsl(0, 0%, 100%);
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-tabs ul {
-  display: flex;
-}
-
-.form-tabs ul li {
-  color: hsl(272, 40%, 35%);
-  cursor: pointer;
-  height: 2rem;
-  padding: 0.3rem;
-}
-
-.form-tabs ul li.active {
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(272, 40%, 35%);
-}
-
-.form-buttons {
-  padding: 0 0.5rem;
-}
-
-.form-buttons ul {
-  align-items: center;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-}
-
-.form-buttons ul svg {
-  fill: hwb(256 1% 66%);
+  fill: #06768d;
   height: 1.8rem;
   width: 1.8rem;
 }
@@ -110,8 +79,11 @@
 }
 
 .form-element input {
-  background-color: hsl(225, 63%, 65%);
-  border-bottom: solid 1px #fff;
+  background-color: #2e2f30;
+  border-bottom: solid 0.05rem #1d1d1d;
+  border-top: solid 0.05rem #1d1d1d;
+  border-end-end-radius: 0.5rem;
+  border-end-start-radius: 0.25rem;
   color: hsl(0, 0%, 100%);
   width: 100%;
   padding: 0.3rem 0;
