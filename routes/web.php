@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin'], function () {
   Route::resource('usuarios', 'App\Http\Controllers\Admin\UserController', [
     'parameters' => [
       'usuarios' => 'user',

@@ -28,3 +28,7 @@ body {
   gap: 2rem;
   grid-template-columns: 2fr 4fr;
 }
+
+ul {
+  list-style: none;
+}

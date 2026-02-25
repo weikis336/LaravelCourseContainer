@@ -9,7 +9,7 @@
 
 .table-header {
   align-items: center;
-  background-color: hsl(0, 0%, 100%);
+  background-color: #1a1a1a;
   border-end-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
   display: flex;
@@ -21,12 +21,12 @@
   align-items: center;
   display: flex;
   gap: 0.5rem;
-  padding: 0;
+  padding: 0.25rem;
   margin: 0;
 }
 
 .table-header-buttons svg {
-  fill: hwb(256 1% 66%);
+  fill: #06768d;
   height: 1.8rem;
   width: 1.8rem;
 }
@@ -75,7 +75,7 @@
 }
 
 .table-info {
-  background-color: hsl(0, 0%, 100%);
+  background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
@@ -96,7 +96,7 @@
 
 .table-page-button {
   cursor: pointer;
-  fill: #1a1a1a;
+  fill: #06768d;
   height: 1.5rem;
   width: 1.5rem;
 }
@@ -121,6 +121,9 @@
   width: 100%;
   gap: 0.5rem;
 }
+.table-row-element p {
+  margin: 0;
+}
 
 .table-card-buttons {
   display: flex;
@@ -135,7 +138,7 @@
 }
 
 .table-card-buttons ul li svg {
-  fill: #1a1a1a;
+  fill: #06768d;
   height: 1.8rem;
   width: 1.8rem;
   cursor: pointer;
