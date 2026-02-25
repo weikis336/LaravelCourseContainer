@@ -1,6 +1,3 @@
-UserRequest (validador de datos)
-
-
 <?php
 
 namespace App\Http\Requests\Admin;

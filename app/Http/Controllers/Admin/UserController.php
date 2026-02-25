@@ -50,7 +50,7 @@ class UserController extends Controller
     try {
       if (request()->ajax()) {
         return response()->json([
-          'form' => view('components.admin-form', ['formStructure' => $this->user->getFormStructure(), 'record' => $this->user])->render(),
+          'form' => view('components.forms.users', ['record' => $this->user])->render(),
         ], 200);
       }
     } catch (\Exception $e) {
@@ -87,8 +87,8 @@ class UserController extends Controller
       }
       
       return response()->json([
-        'table' => view('components.admin-table', ['tableStructure' => $this->user->getTableStructure(), 'records' => $users])->render(),
-        'form' => view('components.admin-form', ['formStructure' => $this->user->getFormStructure(), 'record' => $this->user])->render(),
+        'table' => view('components.tables.users', ['records' => $users])->render(),
+        'form' => view('components.forms.users', ['record' => $this->user])->render(),
         'message' => $message,
       ], 200);
     }
@@ -103,7 +103,7 @@ class UserController extends Controller
   {
     try{
       return response()->json([
-        'form' => view('components.admin-form', ['formStructure' => $this->user->getFormStructure(), 'record' => $user])->render(),
+        'form' => view('components.forms.users', ['record' => $user])->render(),
       ], 200);
     }
     catch(\Exception $e){
@@ -125,8 +125,8 @@ class UserController extends Controller
       $message = \Lang::get('admin/notification.destroy');
       
       return response()->json([
-        'table' => view('components.admin-table', ['tableStructure' => $this->user->getTableStructure(), 'records' => $users])->render(),
-        'form' => view('components.admin-form', ['formStructure' => $this->user->getFormStructure(), 'record' => $this->user])->render(),
+        'table' => view('components.tables.users', ['records' => $users])->render(),
+        'form' => view('components.forms.users', ['record' => $this->user])->render(),
         'message' => $message,
       ], 200);
     }

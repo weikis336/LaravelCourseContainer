@@ -40,6 +40,7 @@
 }
 
 .form-buttons ul svg {
+  cursor: pointer;
   fill: hwb(256 1% 66%);
   height: 1.8rem;
   width: 1.8rem;

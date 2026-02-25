@@ -13,18 +13,34 @@
   </div>
   <div class="table-body">
     @foreach($records as $record)
-      <div class="table-row">
-        <div class="table-row-element">
-          <p>{{ $record->name }}</p>
+      <div class="table-card">
+        <div class="table-row">
+          <div class="table-row-element">
+            <p class="table-row-element-label">Nombre</p>
+            <p>{{ $record->name }}</p>
+          </div>
+          <div class="table-row-element">
+            <p class="table-row-element-label">Email</p>
+            <p>{{ $record->email }}</p>
+          </div>
+          <div class="table-row-element">
+            <p class="table-row-element-label">Fecha de creación</p>
+            <p>{{ $record->created_at }}</p>
+          </div>
+          <div class="table-row-element">
+            <p class="table-row-element-label">Fecha de actualización</p>
+            <p>{{ $record->updated_at }}</p>
+          </div>
         </div>
-        <div class="table-row-element">
-          <p>{{ $record->email }}</p>
-        </div>
-        <div class="table-row-element">
-          <p>{{ $record->created_at }}</p>
-        </div>
-        <div class="table-row-element">
-          <p>{{ $record->updated_at }}</p>
+        <div class="table-card-buttons">
+          <ul>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>edit</title><path d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6.02 20.71,5.63L18.37,3.29C17.98,2.9 17.35,2.9 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04Z" /></svg>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M6,19A2,2 0 0,0 8,17H16A2,2 0 0,0 18,19V9H6V19M9.5,7H14.5V3H9.5V7M18,4H15L14,3H10L9,4H6V6H18V4Z" /></svg>
+            </li>
+          </ul>
         </div>
       </div>
     @endforeach
