@@ -1,3 +1,44 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+.table-header {
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.table-header-buttons ul {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.table-header-buttons svg {
+  fill: hwb(256 1% 66%);
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.filter-button,
+.filter-cancel-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.filter-button.active,
+.filter-cancel-button.active {
+  display: block;
+}
+
 .table-body {
   align-items: center;
   display: flex;
