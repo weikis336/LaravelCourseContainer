@@ -60,7 +60,7 @@ export default (() => {
       }))
     }
 
-    if (event.target.closest('.table-page-button')) {
+    if (event.target.closest('.table-page-buttons')) {
 
       const paginationButton = event.target.closest('.table-page-button');
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\Customer\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+
     Route::get('customer-register', [RegisteredUserController::class, 'create'])
         ->name('customer-register');
 
@@ -21,7 +22,6 @@ Route::middleware('guest')->group(function () {
         ->name('customer-login');
 
     Route::post('customer-login', [AuthenticatedSessionController::class, 'store']);
-
 
     Route::get('customer-forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('customer-password.request');
