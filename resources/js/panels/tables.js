@@ -4,14 +4,14 @@ export default (() => {
 
   document.addEventListener("refreshTable", event => {
     tableSection.innerHTML = event.detail.table;
-  });
+  })
 
   tableSection?.addEventListener('click', async (event) => {
 
     if (event.target.closest('.edit-button')) {
 
       const editButton = event.target.closest('.edit-button')
-      const endpoint = editButton.dataset.endpoint;
+      const endpoint = editButton.dataset.endpoint
 
       try {
         const response = await fetch(endpoint, {
@@ -27,13 +27,13 @@ export default (() => {
 
         if (response.status === 200) {
 
-          const json = await response.json();
+          const json = await response.json()
 
           document.dispatchEvent(new CustomEvent('refreshForm', {
             detail: {
               form: json.form,
             }
-          }));
+          }))
         }
       } catch (error) {
 
@@ -48,24 +48,24 @@ export default (() => {
       }
     }
 
-    if (event.target.closest('.destroy-button')) {
+    if (event.target.closest('.delete-button')) {
 
-      const destroyButton = event.target.closest('.destroy-button');
-      const endpoint = destroyButton.dataset.endpoint;
+      const deleteButton = event.target.closest('.delete-button')
+      const endpoint = deleteButton.dataset.endpoint
 
       document.dispatchEvent(new CustomEvent('openModalDestroy', {
         detail: {
           endpoint: endpoint,
         }
-      }));
+      }))
     }
 
-    if (event.target.closest('.table-pagination-page')) {
+    if (event.target.closest('.table-page-button')) {
 
-      const paginationButton = event.target.closest('.table-pagination-page');
+      const paginationButton = event.target.closest('.table-page-button');
 
       if (paginationButton.classList.contains('inactive')) {
-        return;
+        return
       }
 
       try {
