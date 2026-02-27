@@ -2,6 +2,11 @@
 @import "./components/tables.css";
 @import "./components/header.css";
 @import "./components/login.css";
+@import "./components/menu-lateral.css";
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: #272727;
