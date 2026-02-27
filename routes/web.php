@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin.panel');
+    return view('admin.dashboard.index');
 });
 
 Route::group(['prefix' => 'cuenta', 'middleware' => ['auth']], function () {

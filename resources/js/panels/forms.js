@@ -2,7 +2,7 @@ export default (() => {
   const formSection = document.querySelector('.crud-form')
 
   // Reset del formulario
-  document.addEventListener("reset-form", event => {
+  document.addEventListener("refreshForm", event => {
     if (event.detail.form) {
       formSection.innerHTML = event.detail.form
     }
@@ -51,6 +51,7 @@ export default (() => {
       } catch (error) {
         if (error.status === 422) {
           const json = await error.json();
+          console.log(json)  
           const validationContainer = formSection.querySelector('.validation-errors');
 
           document.dispatchEvent(new CustomEvent('showformValidations', {

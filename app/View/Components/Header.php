@@ -9,13 +9,13 @@ use Illuminate\View\Component;
 class Header extends Component
 {
 
-    public function __construct()
-    {
-    }
+    public function __construct(
+        public string $title
+    ){}
 
 
     public function render(): View|Closure|string
     {
-        return view('components.header');
+        return view('components.header.header');
     }
 }

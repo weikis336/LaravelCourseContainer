@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="container">
-    <x-header></x-header>
+    {{ $header ?? '' }}
     <div class="app-container">
        {{ $slot }}
     </div>

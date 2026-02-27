@@ -34,11 +34,11 @@
         </div>
         <div class="table-card-buttons">
           <ul>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=".edit-button"><title>editar</title><path d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6.02 20.71,5.63L18.37,3.29C17.98,2.9 17.35,2.9 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04Z" /></svg>
+            <li class="edit-button" data-endpoint="{{ route('users_edit', $record->id) }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>editar</title><path d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6.02 20.71,5.63L18.37,3.29C17.98,2.9 17.35,2.9 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04Z" /></svg>
             </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=".delete-button"><title>eliminar</title><path d="M6,19A2,2 0 0,0 8,17H16A2,2 0 0,0 18,19V9H6V19M9.5,7H14.5V3H9.5V7M18,4H15L14,3H10L9,4H6V6H18V4Z" /></svg>
+            <li class="delete-button" data-endpoint="{{ route('users_destroy', $record->id) }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>eliminar</title><path d="M6,19A2,2 0 0,0 8,17H16A2,2 0 0,0 18,19V9H6V19M9.5,7H14.5V3H9.5V7M18,4H15L14,3H10L9,4H6V6H18V4Z" /></svg>
             </li>
           </ul>
         </div>

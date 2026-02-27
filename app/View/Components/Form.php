@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class table extends Component
+class Form extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class table extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tables.table');
+        return view('components.forms.form');
     }
 }

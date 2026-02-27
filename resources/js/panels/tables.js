@@ -12,8 +12,10 @@ export default (() => {
 
       const editButton = event.target.closest('.edit-button')
       const endpoint = editButton.dataset.endpoint
-
+      console.log("clicked")
+      console.log(endpoint)
       try {
+        
         const response = await fetch(endpoint, {
           headers: {
             'X-Requested-With': 'XMLHttpRequest',
@@ -53,11 +55,34 @@ export default (() => {
       const deleteButton = event.target.closest('.delete-button')
       const endpoint = deleteButton.dataset.endpoint
 
-      document.dispatchEvent(new CustomEvent('openModalDestroy', {
-        detail: {
-          endpoint: endpoint,
-        }
-      }))
+      // document.dispatchEvent(new CustomEvent('openModalDestroy', {
+      //   detail: {
+      //     endpoint: endpoint,
+      //   }
+      // }))
+      const response = await fetch(endpoint, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+      })
+
+      if (response.status === 500) {
+        throw response
+      }
+
+      if (response.status === 200) {
+        console.log("eliminado")
+        const json = await response.json()
+
+        document.dispatchEvent(new CustomEvent('refreshTable', {
+          detail: {
+            table: json.table,
+          }
+        }));
+      }
     }
 
     if (event.target.closest('.table-page-buttons')) {
