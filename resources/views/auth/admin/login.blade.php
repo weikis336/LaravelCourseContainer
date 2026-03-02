@@ -1,7 +1,11 @@
 <x-guest-layout>
     <div class="login-body">
+        <div class="login-background">
+            <img src="{{ asset('images/login-background.jpg') }}" alt="Login Background">
+        </div>
         <div class="login-wrapper">
-            <h2 class="login-title">Inicia Sesión</h2>
+
+            <x-login-logo />
             
             <!-- Session Status -->
             @if (session('status'))
