@@ -1,4 +1,4 @@
-<x-layouts.admin>
+<x-layouts.customer>
     <x-slot name="header">
         <x-header title="CustomerDashboard" />
     </x-slot>

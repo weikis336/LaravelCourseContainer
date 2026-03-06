@@ -13,20 +13,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('customer-register', [RegisteredUserController::class, 'create'])
+    Route::get('customer/register', [RegisteredUserController::class, 'create'])
         ->name('customer-register');
 
-    Route::post('customer-register', [RegisteredUserController::class, 'store']);
+    Route::post('customer/register', [RegisteredUserController::class, 'store']);
 
-    Route::get('customer-login', [AuthenticatedSessionController::class, 'create'])
+    Route::get('customer/login', [AuthenticatedSessionController::class, 'create'])
         ->name('customer-login');
 
-    Route::post('customer-login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('customer/login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('customer-forgot-password', [PasswordResetLinkController::class, 'create'])
-        ->name('customer-password.request');
+    Route::get('customer/forgot-password', [PasswordResetLinkController::class, 'create'])
+        ->name('customer/password.request');
 
-    Route::post('customer-forgot-password', [PasswordResetLinkController::class, 'store'])
+    Route::post('customer/forgot-password', [PasswordResetLinkController::class, 'store'])
         ->name('customer-password.email');
 
     Route::get('customer-reset-password/{token}', [NewPasswordController::class, 'create'])

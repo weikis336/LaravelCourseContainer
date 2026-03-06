@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redis;
 use App\Models\Resources;
 use App\Models\Servers;
 use App\Models\Network;
-use App\Models\InterfacesTraffic;
+use App\Models\InterfacesTraffics;
 
 class RedisSubscriber extends Command
 {
@@ -84,7 +84,7 @@ class RedisSubscriber extends Command
                 if (is_null($stats->up ?? null) && is_null($stats->down ?? null)) {
                     continue;
                 }
-                InterfacesTraffic::create([
+                InterfacesTraffics::create([
                     'server_id'     => $server->id,
                     'interface'     => $ifaceName,
                     'network_in'    => $stats->down ?? null,

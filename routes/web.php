@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
 
   Route::get('/dashboard', function () {
     return view('admin.dashboard.index');
@@ -29,7 +29,7 @@ Route::get('/admin', function () {
     return view('admin.dashboard.index');
 });
 
-Route::group(['prefix' => 'cuenta', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'cuenta', 'middleware' => ['auth:customer']], function () {
   Route::get('/dashboard', function () {
       return view('customer.dashboard.index');
   })->name('customer-dashboard');

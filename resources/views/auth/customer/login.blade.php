@@ -1,7 +1,8 @@
 <x-guest-layout>
     <div class="login-body">
         <div class="login-wrapper">
-            <h2 class="login-title">Inicia Sesión</h2>
+
+            <x-login-logo />
             
             <!-- Session Status -->
             @if (session('status'))
@@ -10,7 +11,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}" class="login-form">
+            <form method="POST" action="{{ route('customer-login') }}" class="login-form">
                 @csrf
 
                 <!-- Email Address -->

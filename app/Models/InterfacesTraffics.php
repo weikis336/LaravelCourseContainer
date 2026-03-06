@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InterfacesTraffic extends Model
+class InterfacesTraffics extends Model
 {   
     public $timestamps = false;
     protected $fillable = [
