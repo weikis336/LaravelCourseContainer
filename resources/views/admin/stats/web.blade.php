@@ -1,6 +1,6 @@
 <x-layouts.admin>
     <x-slot name="header">
-        <x-header title="Dashboard" />
+        <x-header-admin title="Estadisticas web" />
     </x-slot>
 
     <div class="py-12">

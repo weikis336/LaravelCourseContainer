@@ -12,4 +12,4 @@
             </div>
         </div>
     </div>
-</x-layouts.admin>
+</x-layouts.customer>

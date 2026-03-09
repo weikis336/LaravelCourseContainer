@@ -1,6 +1,6 @@
 <x-layouts.admin>
     <x-slot name="header">
-        <x-header title="Users" />
+        <x-header-admin title="Users" />
     </x-slot>
     <x-crud>
       <x-slot name="table">

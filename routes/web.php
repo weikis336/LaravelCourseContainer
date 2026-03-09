@@ -23,6 +23,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
       'destroy' => 'users_destroy',
     ]
   ]);
+  Route::get('/web-stats', function () {
+    return view('admin.stats.web');
+  })->name('web-stats');
+  Route::get('/downloads-stats', function () {
+    return view('admin.stats.download');
+  })->name('downloads-stats');
 });
 
 Route::get('/admin', function () {
