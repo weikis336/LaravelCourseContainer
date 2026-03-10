@@ -3,57 +3,72 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Illuminate\Support\Facades\Http;
 class FetchSourceforgeStats extends Command
 {
-    protected $signature = 'sf:fetch-stats
-                            {project : Nombre corto del proyecto en SF}
-                            {--days=30 : Días hacia atrás a consultar}';
+    protected $signature = 'sf:fetch-stats {project}';
     protected $description = 'Fetches download stats from SourceForge API and persists them';
+    protected $project;
+    
+
 
     public function handle(): int
     {
-        $project  = $this->argument('project');
-        $end      = now()->toDateString();
-        $start    = now()->subDays((int) $this->option('days'))->toDateString();
+        $project = $this->argument('project');
+        // $url = "https://sourceforge.net/projects/{$project}/files/{$edition}/stats/json?start_date={$start}&end_date={$end}&period={$period}";
+        $rssurl = "https://sourceforge.net/projects/{$project}/rss?path=/";
 
-        $url  = "https://sourceforge.net/projects/{$project}/files/stats/json"
-              . "?start_date={$start}&end_date={$end}";
-
-        $response = Http::timeout(15)->get($url);
-
-        if ($response->failed()) {
-            $this->error("SourceForge API error: {$response->status()}");
-            return self::FAILURE;
-        }
-
-        $data = $response->json();
-
-        foreach ($data['downloads'] as [$date, $count]) {
-            SfDownloadDaily::updateOrCreate(
-                ['project' => $project, 'stat_date' => $date],
-                ['downloads' => $count]
-            );
-        }
-
-        foreach ($data['countries'] as $code => $count) {
-            SfDownloadByCountry::updateOrCreate(
-                ['project' => $project, 'period_start' => $start,
-                 'period_end' => $end, 'country_code' => $code],
-                ['downloads' => $count]
-            );
-        }
-
-        foreach ($data['oses'] as $os => $count) {
-            SfDownloadByOs::updateOrCreate(
-                ['project' => $project, 'period_start' => $start,
-                 'period_end' => $end, 'os_name' => $os],
-                ['downloads' => $count]
-            );
-        }
-
-        $this->info("Stats synced: {$data['total']} total downloads.");
-        return self::SUCCESS;
+        $editions = $this->getEditions($project);
+        return 0;
     }
+    public function getEditions($project)
+    {
+        $rssurl = "https://sourceforge.net/projects/{$project}/rss?path=/";
+        $rss = $this->getRSS($rssurl);
+
+        $editions = [];
+
+        foreach ($rss->channel->item as $item) {
+            $title = (string)$item->title;
+            $pubDate = (string)$item->pubDate;
+
+            if (preg_match('#^/([^/]+)/#', $title, $m)) {
+                $name = $m[1];
+                if (!isset($editions[$name])) {
+                    $editions[$name] = [
+                        'name'    => $name,
+                        'pubDate' => $pubDate,
+                    ];
+                }
+            }
+        }
+        foreach ($editions as $edition) {
+            echo $edition['name'] . "\n";
+            echo $edition['pubDate'] . "\n";
+        }
+        return array_values($editions); 
+    }
+    public function getRSS($rssurl)
+    {
+        $response = Http::get($rssurl);
+        return simplexml_load_string($response->body());
+    }
+
+    public function getStats($url)
+    {
+        $response = Http::get($url);
+        return $response->json();
+    }
+
+    public function feedDB($project, $editions)
+    {
+        foreach ($editions as $edition) {
+            $this->info('Fetching stats for: ' . $edition['name']);
+            $this->info('PubDate: ' . $edition['pubDate']);
+        }
+    }
+
+
+
 }
 
