@@ -12,24 +12,28 @@ use App\Models\SourceForgeDownloads;
 
 class FetchSourceForgeStats extends Command
 {
-    protected $signature = 'sf:fetch-stats {project}';
+    protected $signature = 'sf:fetch-stats {project : The project name} {--feed : Feed the database}';
     protected $description = 'Fetches download stats from SourceForge API and persists them';
     protected $project;
-    
 
+    protected $feed;
 
     public function handle()
     {
         $project = $this->argument('project');
-        $this->getHistoricalStats($project);
-        // $project = $this->argument('project');
-        // $editions = $this->getEditions($project);
-        // foreach ($editions as $edition) {
-        //     $end = date('Y-m-d');
-        //     $url = "https://sourceforge.net/projects/{$project}/files/{$edition['name']}/stats/json?start_date={$edition['pubDate']}&end_date={$end}&period=daily";
-        //     $stats = $this->getStats($url);
-        //     echo $edition['name'] . ": " . json_encode($stats, JSON_PRETTY_PRINT) . "\n";
-        // }
+        $feed = $this->option('feed');
+        if ($feed) {
+            $this->getHistoricalStats($project);
+        }
+        else {
+            $editions = $this->getEditions($project);
+            foreach ($editions as $edition) {
+                $today = date('Y-m-d');
+                $url = "https://sourceforge.net/projects/{$project}/files/{$edition['name']}/stats/json?start_date={$today}&end_date={$today}&period=daily";
+                $stats = $this->getStats($url);
+                $this->feedDB($edition, $stats, $project, $today);
+            }
+        }
     }
     public function getEditions($project)
     {
@@ -59,7 +63,7 @@ class FetchSourceForgeStats extends Command
             echo $edition['name'] . "\n";
             echo $edition['pubDate'] . "\n";
         }
-        return array_values($editions); 
+        return array_values($editions);
     }
     public function getRSS($rssurl)
     {
@@ -76,30 +80,32 @@ class FetchSourceForgeStats extends Command
     {
         $editions = $this->getEditions($project);
         foreach ($editions as $edition) {
-            $start = new DateTime($edition['pubDate']);
-            $end   = new DateTime(date('Y-m-d'));
+            $startDate = new DateTime($edition['pubDate']);
+            $endDate   = new DateTime(date('Y-m-d'));
             
-            for ($i = clone $start; $i <= $end; $i->modify('+1 day')) {
+            for ($i = clone $startDate; $i <= $endDate; $i->modify('+1 day')) {
                 $dateStr = $i->format('Y-m-d');
                 $url = "https://sourceforge.net/projects/{$project}/files/{$edition['name']}/stats/json?start_date={$dateStr}&end_date={$dateStr}&period=daily";
                 $stats = $this->getStats($url);
-                $this->feedDB($edition['name'], $stats, $project, $dateStr);
+                $this->feedDB($edition, $stats, $project, $dateStr);
             }
         }
     }
 
     public function feedDB($edition, $stats, $project, $date)
     {
-        $parts = explode('-', $edition);
+        $distroname = $edition['name'];
+        $parts = explode('-', $edition['name']);
         $codename = strtolower($parts[count($parts) - 1]);
         $version = $parts[count($parts) - 2];
+        $strReleaseDate = new DateTime($edition['pubDate']);
 
         $editionDB = SourceForgeEditions::updateOrCreate(
-            ['name' => $edition, 'project' => $project],
+            ['name' => $distroname, 'project' => $project],
             [
-                'code_name'    => $codename,
+                'codename'     => $codename,
                 'version'      => $version,
-                'release_date' => $date,
+                'release_date' => $strReleaseDate,
             ]
         );
 

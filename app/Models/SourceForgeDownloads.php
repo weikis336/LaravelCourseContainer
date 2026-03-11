@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SourceForgeDownloads extends Model
 {   
+    protected $table = 'sourceforge_downloads';
+
     protected $fillable = [
         'id',
         'edition_id',

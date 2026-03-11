@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class SourceForgeCountries extends Model
 {
     protected $table = 'sourceforge_countries';
+    public $timestamps = false;
+
     protected $fillable = [
         'id',
         'name',
