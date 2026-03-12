@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\SQL\Metrics\Usage;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Network extends Model
+class InterfacesTraffics extends Model
 {   
     public $timestamps = false;
     protected $fillable = [
         'server_id',
-        'network_address',
-        'ip_address',
-        'mac_address',
-        'iface_type',
+        'interface',
+        'network_in',
+        'network_out',
+        'network_total',
         'recorded_at',
     ];
 

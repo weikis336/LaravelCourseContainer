@@ -5,10 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use DateTime;
-use App\Models\SourceForgeEditions;
-use App\Models\SourceForgePlatforms;
-use App\Models\SourceForgeCountries;
-use App\Models\SourceForgeDownloads;
+use App\Models\SQL\Metrics\SF\SourceForgeEditions;
+use App\Models\SQL\Metrics\SF\SourceForgePlatforms;
+use App\Models\SQL\Metrics\SF\SourceForgeCountries;
+use App\Models\SQL\Metrics\SF\SourceForgeDownloads;
 
 class FetchSourceForgeStats extends Command
 {
@@ -58,10 +58,6 @@ class FetchSourceForgeStats extends Command
                     ];
                 }
             }
-        }
-        foreach ($editions as $edition) {
-            echo $edition['name'] . "\n";
-            echo $edition['pubDate'] . "\n";
         }
         return array_values($editions);
     }

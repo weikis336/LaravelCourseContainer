@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\SQL\Metrics\SF;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SourceForgePlatforms extends Model
-{
-    protected $table = 'sourceforge_platforms';
+class SourceForgeEditions extends Model
+{   
+    protected $table = 'sourceforge_editions';
     public $timestamps = false;
 
     protected $fillable = [
         'id',
         'name',
+        'codename',
+        'version',
+        'release_date',
+        'project',
     ];
 
     public function downloads()
     {
         return $this->hasMany(SourceForgeDownloads::class);
     }
-    
 }

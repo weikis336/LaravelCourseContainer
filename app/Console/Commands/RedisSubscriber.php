@@ -4,10 +4,10 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Redis;
-use App\Models\Resources;
-use App\Models\Servers;
-use App\Models\Network;
-use App\Models\InterfacesTraffics;
+use App\Models\SQL\Metrics\Usage\Resources;
+use App\Models\SQL\Metrics\Usage\Servers;
+use App\Models\SQL\Metrics\Usage\Network;
+use App\Models\SQL\Metrics\Usage\InterfacesTraffics;
 
 class RedisSubscriber extends Command
 {
