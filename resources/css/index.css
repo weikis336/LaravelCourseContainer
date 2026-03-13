@@ -3,7 +3,7 @@
 @import "./components/header.css";
 @import "./components/login.css";
 @import "./components/menu-lateral.css";
-
+@import "./components/dashboard.css";
 * {
   box-sizing: border-box;
 }

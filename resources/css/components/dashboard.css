@@ -1,0 +1,24 @@
+.dash-grid{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto;
+    grid-auto-columns: auto;
+    gap: 1rem;
+}
+.general-usage-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    width: 100%;
+    gap: 3rem;
+}
+.general-usage-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    background: #373737e3;
+    padding: 2rem;
+    border-radius: 1.2rem;
+}

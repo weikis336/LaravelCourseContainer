@@ -132,6 +132,11 @@ return [
 
     'migrations' => [
         'table' => 'migrations',
+        'paths' => [
+            database_path('migrations'),
+            database_path('migrations/SQL/Metrics/SF'),
+            database_path('migrations/SQL/Metrics/Usage'),
+        ],
         'update_date_on_publish' => true,
     ],
 
@@ -152,20 +157,20 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-database-'),
+            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')) . '-database-'),
             'persistent' => env('REDIS_PERSISTENT', false),
         ],
 
         'default' => [
-            'url'                => env('REDIS_URL'),
-            'host'               => env('REDIS_HOST', '127.0.0.1'),
-            'port'               => env('REDIS_PORT', '6379'),
-            'database'           => env('REDIS_DB', '0'),
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => env('REDIS_DB', '0'),
             'read_write_timeout' => -1,
-            'max_retries'        => env('REDIS_MAX_RETRIES', 3),
-            'backoff_algorithm'  => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
-            'backoff_base'       => env('REDIS_BACKOFF_BASE', 100),
-            'backoff_cap'        => env('REDIS_BACKOFF_CAP', 1000),
+            'max_retries' => env('REDIS_MAX_RETRIES', 3),
+            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),
+            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),
+            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
         ],
 
 
@@ -182,15 +187,15 @@ return [
             'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),
         ],
         'subscriber' => [
-            'url'                => null,
-            'host'               => env('REDIS_HOST', '127.0.0.1'),
-            'username'           => null,
-            'password'           => null,
-            'port'               => 6379,
-            'database'           => 0,
+            'url' => null,
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'username' => null,
+            'password' => null,
+            'port' => 6379,
+            'database' => 0,
             'read_write_timeout' => -1,
-            'options'            => [
-                'prefix'  => '',       // override global prefix
+            'options' => [
+                'prefix' => '',       // override global prefix
                 'cluster' => false,    // disable cluster mode
             ],
         ],
