@@ -38,6 +38,6 @@ class Servers extends Model
 
     public function interfacesTraffics()
     {
-        return $this->hasMany(InterfacesTraffic::class);
+        return $this->hasMany(InterfacesTraffics::class);
     }
 }

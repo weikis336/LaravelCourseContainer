@@ -4,8 +4,8 @@
     </x-slot>
     <x-slot>
         <x-dashboard.dashgrid>
-            <x-dashboard.general>
-            </x-dashboard.general>
+            <x-dashboard.general-usage>
+            </x-dashboard.general-usage>
         </x-dashboard.dashgrid>
     </x-slot>
 
