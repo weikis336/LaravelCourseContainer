@@ -1,15 +1,13 @@
 <?php
-use App\Events\GetMetrics;
 use App\Http\Controllers\ProfileController;
-use App\Models\SQL\Metrics\Usage\Servers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
   return view('welcome');
 });
-route::get('/broadcast-test', function () {
-  broadcast(new GetMetrics(Servers::all()->first()));
-});
+Route::get('/admin/dashboard', function () {
+  return view('admin.dashboard.index');
+})->name('dashboard');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {

@@ -9,6 +9,7 @@ use App\Models\SQL\Metrics\Usage\Servers;
 use App\Models\SQL\Metrics\Usage\Resources;
 use App\Models\SQL\Metrics\Usage\Network;
 use App\Models\SQL\Metrics\Usage\InterfacesTraffics;
+use App\Events\GetServerMetrics;
 
 class StoreServerStats implements ShouldQueue
 {
@@ -87,5 +88,9 @@ class StoreServerStats implements ShouldQueue
                 'recorded_at' => now(),
             ]);
         }
+
+        $resource = Resources::latest('recorded_at')->first();
+
+        broadcast(new GetServerMetrics($resource));
     }
 }
