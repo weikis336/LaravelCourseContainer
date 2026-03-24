@@ -1,7 +1,7 @@
 <div class="general-usage-container">
     <div class="general-usage-card">
-        <x-dashboard.metrics.network-chart>
-        </x-dashboard.metrics.network-chart>
+        <x-dashboard.metrics.cpu-temp-chart>
+        </x-dashboard.metrics.cpu-temp-chart>
     </div>
     <div class="general-usage-card">
         <x-dashboard.metrics.memory-chart>

@@ -45,10 +45,4 @@ class GetServerMetrics implements ShouldBroadcastNow
             ],
         ];
     }
-
-    // Opcional, si quieres cambiar el nombre del evento en JS:
-    // public function broadcastAs(): string
-    // {
-    //     return 'server.metrics.update';
-    // }
 }
