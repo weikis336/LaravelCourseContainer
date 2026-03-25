@@ -1,20 +1,20 @@
 <div class="form-container">
     <div class="form-header">
-        <div class="form-tabs" route="users">
+        <div class="form-tabs" route="faqs">
             <ul>
                 <li class="tab active" data-tab="general">General</li>
             </ul>
         </div>
         <div class="form-buttons">
             <ul>
-                <li class="reset-button" data-endpoint="{{route('users_create')}}">
+                <li class="reset-button" data-endpoint="{{route('faqs_create')}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>broom</title>
                         <path
                             d="M19.36,2.72L20.78,4.14L15.06,9.85C16.13,11.39 16.28,13.24 15.38,14.44L9.06,8.12C10.26,7.22 12.11,7.37 13.65,8.44L19.36,2.72M5.93,17.57C3.92,15.56 2.69,13.16 2.35,10.92L7.23,8.83L14.67,16.27L12.58,21.15C10.34,20.81 7.94,19.58 5.93,17.57Z" />
                     </svg>
                 </li>
-                <li class="store-button" data-endpoint="{{route('users_store')}}">
+                <li class="store-button" data-endpoint="{{route('faqs_store')}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>content-save</title>
                         <path
@@ -34,34 +34,30 @@
                 <input name="id" type="hidden" value="{{ $record->id }}">
                 <div class="form-element">
                     <div class="form-element-label">
-                        <label>Nombre</label>
+                        <label>Titulo</label>
                     </div>
                     <div class="form-element-input">
-                        <input type="text" name="name" value="{{ $record->name }}">
+                        <input type="text" name="title" value="{{ $record->title }}">
                     </div>
                 </div>
                 <div class="form-element">
                     <div class="form-element-label">
-                        <label>Email</label>
+                        <label>Descripción</label>
                     </div>
                     <div class="form-element-input">
-                        <input type="email" name="email" value="{{ $record->email }}">
+                        <input type="text" name="description" value="{{ $record->description }}">
                     </div>
                 </div>
                 <div class="form-element">
                     <div class="form-element-label">
-                        <label>Contraseña</label>
+                        <label>Idioma</label>
                     </div>
                     <div class="form-element-input">
-                        <input type="password" name="password">
-                    </div>
-                </div>
-                <div class="form-element">
-                    <div class="form-element-label">
-                        <label>Confirmar contraseña</label>
-                    </div>
-                    <div class="form-element-input">
-                        <input type="password" name="password_confirmation">
+                        <select name="lang">
+                            <option value="es" {{ $record->lang == 'es' ? 'selected' : '' }}>Español</option>
+                            <option value="en" {{ $record->lang == 'en' ? 'selected' : '' }}>Inglés</option>
+                            <option value="pt" {{ $record->lang == 'pt' ? 'selected' : '' }}>Portugués</option>
+                        </select>
                     </div>
                 </div>
             </div>

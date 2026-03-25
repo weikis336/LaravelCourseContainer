@@ -1,13 +1,13 @@
 export default (() => {
   const formSection = document.querySelector('.crud-form')
 
-  // Reset del formulario
+
   document.addEventListener("refreshForm", event => {
     if (event.detail.form) {
       formSection.innerHTML = event.detail.form
     }
   })
-  // Manejo de clics en botones
+  const route = document.querySelector('.form-tabs').getAttribute('route')
   formSection?.addEventListener('click', async (event) => {
     // Botón guardar (store-button)
     if (event.target.closest('.store-button')) {
@@ -74,10 +74,9 @@ export default (() => {
       }
     }
 
-    // Botón reset/limpiar 
     if (event.target.closest('.reset-button')) {
       const resetButton = event.target.closest('.reset-button')
-      const endpoint = resetButton.dataset.endpoint || '/admin/usuarios/create'
+      const endpoint = resetButton.dataset.endpoint || `/admin/${route}/create`
 
       try {
         const response = await fetch(endpoint, {

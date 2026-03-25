@@ -1,0 +1,74 @@
+    .faqs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .faq-card {
+        background: rgba(255, 255, 255, 0.05);
+        /* subtle glassmorphism */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .faq-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .faq-card h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+        color: #ffffff;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0.02em;
+    }
+
+    .faq-card p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Soft glowing accent indicating interaction */
+    .faq-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .faq-card:hover::before {
+        opacity: 1;
+    }
+
+    /* Empty state */
+    .faq-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 4rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.1rem;
+    }

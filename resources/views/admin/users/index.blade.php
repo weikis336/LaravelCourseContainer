@@ -1,4 +1,4 @@
-<x-layouts.admin>
+<x-layouts.admin-panels>
     <x-slot name="header">
         <x-header-admin title="Users" />
     </x-slot>
@@ -10,4 +10,4 @@
         <x-forms.users :record="$record"></x-forms.users>
       </x-slot>
     </x-crud>
-</x-layouts.admin>
+</x-layouts.admin-panels>

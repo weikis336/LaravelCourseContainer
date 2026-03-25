@@ -1,6 +1,6 @@
 <div class="table-container">
-  <div class="table-header">
-    <div class="table-header-buttons" route="users">
+  <div class="table-header" route="faqs">
+    <div class="table-header-buttons">
       <ul>
         <li class="filter-button-active">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -23,32 +23,32 @@
       <div class="table-card">
         <div class="table-row">
           <div class="table-row-element">
-            <p class="table-row-element-label">Nombre</p>
-            <p>{{ $record->name }}</p>
+            <p class="table-row-element-label">Pregunta</p>
+            <p>{{ $record->title }}</p>
           </div>
           <div class="table-row-element">
-            <p class="table-row-element-label">Email</p>
-            <p>{{ $record->email }}</p>
+            <p class="table-row-element-label">Respuesta</p>
+            <p>{{ $record->description }}</p>
+          </div>
+          <div class="table-row-element">
+            <p class="table-row-element-label">Idioma</p>
+            <p>{{ $record->lang }}</p>
           </div>
           <div class="table-row-element">
             <p class="table-row-element-label">Fecha de creación</p>
             <p>{{ $record->created_at }}</p>
           </div>
-          <div class="table-row-element">
-            <p class="table-row-element-label">Fecha de actualización</p>
-            <p>{{ $record->updated_at }}</p>
-          </div>
         </div>
         <div class="table-card-buttons">
           <ul>
-            <li class="edit-button" data-endpoint="{{ route('users_edit', $record->id) }}">
+            <li class="edit-button" data-endpoint="{{ route('faqs_edit', $record->id) }}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <title>editar</title>
                 <path
                   d="M3,17.25V21H6.75L17.81,9.94L14.06,6.19L3,17.25M20.71,7.04C21.1,6.65 21.1,6.02 20.71,5.63L18.37,3.29C17.98,2.9 17.35,2.9 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04Z" />
               </svg>
             </li>
-            <li class="delete-button" data-endpoint="{{ route('users_destroy', $record->id) }}">
+            <li class="delete-button" data-endpoint="{{ route('faqs_destroy', $record->id) }}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <title>eliminar</title>
                 <path

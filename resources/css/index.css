@@ -4,6 +4,7 @@
 @import "./components/login.css";
 @import "./components/menu-lateral.css";
 @import "./components/dashboard.css";
+@import "./components/faqs.css";
 * {
   box-sizing: border-box;
 }

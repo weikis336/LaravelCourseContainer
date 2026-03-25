@@ -1,9 +1,6 @@
 import './bootstrap';
-import './panels/forms.js';
-import './panels/tables.js';
 import './components/lateral-menu.js';
 import './components/dashboard-charts.js'
-
 import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
@@ -19,11 +16,6 @@ window.Echo = new Echo({
     enabledTransports: ['ws'],
     disableStats: true,
 });
-
-window.Echo.channel('server-metrics')
-    .listen('App\\Events\\GetMetrics', (e) => {
-        console.log('Datos recibidos:', e.server);
-    });
 
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;

@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
   return view('welcome');
 });
+Route::get('/faqs', function () {
+  $faqs = \App\Models\Faqs::all();
+  return view('faqs.index', compact('faqs'));
+})->name('faqs');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
   Route::get('/dashboard', function () {
@@ -21,6 +25,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
       'edit' => 'users_edit',
       'store' => 'users_store',
       'destroy' => 'users_destroy',
+    ]
+  ]);
+  Route::resource('faqs', 'App\Http\Controllers\Admin\FaqsController', [
+    'parameters' => [
+      'faqs' => 'faqs',
+    ],
+    'names' => [
+      'index' => 'faqs',
+      'create' => 'faqs_create',
+      'edit' => 'faqs_edit',
+      'store' => 'faqs_store',
+      'destroy' => 'faqs_destroy',
     ]
   ]);
   Route::get('/web-stats', function () {

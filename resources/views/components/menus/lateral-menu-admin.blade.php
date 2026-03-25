@@ -14,6 +14,9 @@
             <div class="navigation-links">
                 <a href="{{ route('downloads-stats') }}">Estadisticas de descargas</a>
             </div>
+            <div class="navigation-links">
+                <a href="{{ route('faqs') }}">Preguntas frecuentes</a>
+            </div>
         </div>
 
         <div class="navigation-user">

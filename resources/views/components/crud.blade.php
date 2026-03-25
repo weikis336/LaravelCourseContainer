@@ -1,4 +1,3 @@
-<x-layouts.admin>
   <div class="crud">
     <div class="crud-table">
       {{ $table }}
@@ -7,4 +6,3 @@
       {{ $form }}
     </div>
   </div>
-</x-layouts.admin>

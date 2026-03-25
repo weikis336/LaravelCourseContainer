@@ -1,7 +1,7 @@
 export default (() => {
 
   const tableSection = document.querySelector('.crud-table');
-
+  const route = document.querySelector('.table-header').getAttribute('route')
   document.addEventListener("refreshTable", event => {
     tableSection.innerHTML = event.detail.table;
   })
